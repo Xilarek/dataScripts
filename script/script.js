@@ -1,7 +1,7 @@
 'use strict';
-window.addEventListener('DOMContentLoaded', function () {
+window.addEventListener('DOMContentLoaded',  () => {
     //вызов через атрибут   
-    let date = new Date();
+    const date = new Date();
     console.log(date);
 
     let year = date.getFullYear(),
@@ -14,33 +14,31 @@ window.addEventListener('DOMContentLoaded', function () {
         minutes = date.getMinutes(),
         seconds = date.getSeconds(),
         milliseconds = date.getMilliseconds();
+        console.log(typeof(hours));
 
-    function getTimeOfDay() {
+    const getTimeOfDay = () => {
         let timeOfday;
-        if (10 < hours > 7) {
+        if ((hours >= 0) && (hours < 5)) {
+            timeOfday = 'Спать иди, поздно';
+        } if ((hours >= 5) && (hours < 10)) {
             timeOfday = 'Доброе утро';
-        }
-        if (17 < hours > 10) {
+        } if ((hours >= 10) && (hours < 17)) {
             timeOfday = 'Добрый день';
-        }
-        if (22 < hours > 17) {
+        } if ((hours >= 17) && (hours < 22)) {
             timeOfday = 'Добрый вечер';
-        }
-        if (hours > 22) {
-            timeOfday = 'Доброй ночи';
-        } else {
+        } if (hours >= 22) {
             timeOfday = 'Доброй ночи';
         }
         console.log(timeOfday);
-    }
+    };
 
-    function getDayName() {
+    const getDayName = () => {
         let dayName = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
         let index = newDay;
         console.log('Сегодня:' + dayName[index]);
-    }
+    };
 
-    function getTime() {
+    const getTime = () => {
         if (hours < 10) {
             hours = '0' + hours;
         }
@@ -51,19 +49,17 @@ window.addEventListener('DOMContentLoaded', function () {
             seconds = '0' + seconds;
         }
         console.log('Текущее время: ' + hours + ':' + minutes + ':' + seconds);
-    }
+    };
 
-    function calcDayInYear() {
+    const calcDayInYear = () => {
         let newYear = (date.setFullYear(2021, 0, 0));
         let thisYear = (date.setFullYear(2020, 1, 18));
         let calc = newYear - thisYear;
         calc = (calc / 1000) / 60 / 60 / 24;
         console.log('До нового года осталось: ' + calc);
-    }
+    };
     getTimeOfDay();
     getDayName();
     getTime();
     calcDayInYear();
-
-
 });
